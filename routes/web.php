@@ -1,32 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Auth::routes();
 
-Route::get('/', 'HomeController@index'); // pagina principal / page de login
-Route::get('/recuperar-senha', 'RecuperarSenhaController@index'); // pagina de recuperação de senha
-Route::get('/cadastro', 'CadastroController@index');
+// Route::get('/home', 'HomeController@index');
 
-// Route::get('/', function () {
-//     return view('home/index');
-// });
+Route::get('/reserva', 'ReservaController@index'); // pagina de reserva
+Route::post('/carregando', 'ReservaController@ajaxGetCarrosAction');
+Route::post('/reservando', 'ReservaController@ajaxSaveAction');
+Route::post('/reservando/update', 'ReservaController@ajaxUpdateAction');
 
-// Route::get('/cadastro', function () {
-//     return view('cadastro/index');
-// });
+Route::get('/', 'ReservaController@index'); // pagina de reserva
 
-// Route::get('/recuperar-senha', function () {
-//     return view('recuperar-senha/index');
-// });
-
-// Route::get('/reserva', function () {
-//     return view('reserva/index');
-// });
+Route::get('/lista-reserva', 'ListaReservaController@index'); // pagina de lista de reservas
+Route::post('/listando', 'ListaReservaController@ajaxGetReservaAction');
